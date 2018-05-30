@@ -41,7 +41,7 @@ varlist.shiny <- function(d) {
     varlist$Valid <- valid
     varlist$NAs <- nas
 
-    shiny::shinyApp(ui = fluidPage(DT::DTOutput("x2")), server = function(input, output, session) {
+    shiny::shinyApp(ui = shiny::fluidPage(DT::DTOutput("x2")), server = function(input, output, session) {
         y = varlist
         output$x2 = renderDT(y, selection = "none", server = F, editable = F, colnames = c(Number = 1),
             options = list(pageLength = 50))
