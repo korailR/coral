@@ -4,6 +4,7 @@
 #'
 #' @return a data frame
 #' @import shiny
+#' @import DT
 #' @export
 #'
 #' @examples
