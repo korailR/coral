@@ -43,6 +43,7 @@ varlist.shiny <- function(d) {
     varlist$Type <- type
     varlist$Valid <- valid
     varlist$NAs <- nas
+    varlist <- as.data.frame(lapply(varlist, unlist))
 
     shiny::shinyApp(ui = shiny::fluidPage(DT::DTOutput("x2")), server = function(input, output, session) {
         y = varlist
