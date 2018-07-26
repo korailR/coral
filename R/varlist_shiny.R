@@ -26,9 +26,9 @@ varlist.shiny <- function(d) {
     values <- lapply(d, function(x) if (is.factor(x)) {
         paste(levels(x), collapse = ", ")
     } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
-       "Full NA"
+        "Full NA"
     } else if (is.logical(x) & (length(x) > sum(is.na(x)))) { 
-       paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
+        paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
     } else if (is.character(x)) {
         NA
     } else if (all(is.na(x))) {
