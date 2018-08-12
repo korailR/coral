@@ -14,7 +14,7 @@
 varlist.shiny <- function(d) {
     myfunc.label <- function(x) attributes(x)[["label"]]
     variableslabel <- sapply(d, myfunc.label)
-    name <- names(variableslabel)
+    Name <- names(variableslabel)
     variableslabel <- as.character(variableslabel)
     variableslabel[variableslabel == "NULL"] <- NA
     label <- (label = variableslabel)
@@ -36,7 +36,7 @@ varlist.shiny <- function(d) {
     } else {
         paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
     })
-    varlist <- data.frame(name)
+    varlist <- data.frame(Name)
     varlist$Label <- label
     varlist$Values <- values
     varlist$Class <- cl
