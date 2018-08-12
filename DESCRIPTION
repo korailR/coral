@@ -16,7 +16,6 @@ Imports:
     htmlwidgets, 
     magrittr,
     shiny,
-    tibble,
     grDevices, 
     httpuv,
     mime,
