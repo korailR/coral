@@ -41,6 +41,6 @@ varlist <- function(d) {
     varlist$Type <- type
     varlist$Valid <- valid
     varlist$NAs <- nas
-    varlist <- as.data.frame(lapply(varlist, unlist))
+    varlist <- as.tibble(lapply(varlist, unlist))
     View(varlist, paste("varlist", deparse(substitute(d)), sep = " "))
 }
