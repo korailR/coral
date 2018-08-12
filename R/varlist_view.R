@@ -43,7 +43,8 @@ varlist.view <- function(d) {
     varlist$Type <- type
     varlist$Valid <- valid
     varlist$NAs <- nas
-    varlist <- as_tibble(lapply(varlist, unlist))
+    varlist <- as.data.frame(lapply(varlist, unlist))
+    rownames(varlist) <- NULL
     DT::datatable(varlist, editable = F)
 }
 
