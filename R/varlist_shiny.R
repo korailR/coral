@@ -43,8 +43,9 @@ varlist.shiny <- function(d) {
     varlist$Type <- type
     varlist$Valid <- valid
     varlist$NAs <- nas
-    varlist <- as_tibble(lapply(varlist, unlist))
-
+    varlist <- as.data.frame(lapply(varlist, unlist))
+    rownames(varlist) <- NULL
+                     
     shiny::shinyApp(ui = shiny::fluidPage(DT::DTOutput("x2")), server = function(input, output, session) {
         y = varlist
         output$x2 = DT::renderDT(y, selection = "none", server = F, editable = F, colnames = c(Number = 1),
