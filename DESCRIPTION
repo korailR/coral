@@ -3,7 +3,7 @@ Type: Package
 Title: Set of functions for listing variables of a dataframe and computing means over variables
 Version: 0.1.0
 Authors@R: person("Amal", "Tawfik", email = "amal.tawfik@hesav.ch", role = c("aut", "cre"))
-Maintainer: Amal Tawfik <korail@protonmail.com>
+Maintainer: Amal Tawfik <amal.tawfik@hesav.ch>
 Description: List variables with descriptions of the attributes of each variable (label, values, class, typeof, number of valid rows and NAs). Computing means over variables and dealing with NAs.
 Depends: R (>= 3.5.0)
 License: GPL-3
