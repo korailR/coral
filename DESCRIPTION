@@ -2,9 +2,9 @@ Package: coral
 Type: Package
 Title: Set of functions for listing variables of a dataframe and computing means over variables
 Version: 0.1.0
-Authors@R: person("Amal", "Tawfik", email = "korail@protonmail.com", role = c("aut", "cre"))
+Authors@R: person("Amal", "Tawfik", email = "amal.tawfik@hesav.ch", role = c("aut", "cre"))
 Maintainer: Amal Tawfik <korail@protonmail.com>
-Description: List variables with descriptions of the attributes of each variable in the dataframe (label, values, class, typeof, number of valid rows and NAs?). Computing means over variables and dealing with NAs.
+Description: List variables with descriptions of the attributes of each variable (label, values, class, typeof, number of valid rows and NAs). Computing means over variables and dealing with NAs.
 Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
@@ -19,6 +19,7 @@ Imports:
     grDevices, 
     httpuv,
     mime,
+    lubridate,
     jsonlite,
     xtable,
     digest,
