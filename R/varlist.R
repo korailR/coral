@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples#' \dontrun{
-#' varlist(df)
+#' varlist(df) # df is a data frame
 #' }
 varlist <- function(d) {
   myfunc.label <- function(x) attributes(x)[["label"]]
