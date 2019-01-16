@@ -5,7 +5,9 @@
 #' @return a data.frame
 #' @export
 #'
-#' @examples
+#' @examples#' \dontrun{
+#' varlist(df)
+#' }
 varlist <- function(d) {
   myfunc.label <- function(x) attributes(x)[["label"]]
   variableslabel <- sapply(d, myfunc.label)
