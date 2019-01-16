@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' varlist.view(df)
+#' varlist.view(df) # df is a data frame
 #' }
 varlist.view <- function(d) {
     myfunc.label <- function(x) attributes(x)[["label"]]
