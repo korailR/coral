@@ -24,22 +24,25 @@ varlist.shiny <- function(d) {
     nas <- as.list(sapply(d, function(x) sum(is.na(x))))
     options(scipen = 999)
     values <- lapply(d, function(x) if (is.factor(x)) {
-        paste(levels(x), collapse = ", ")
+      paste(levels(x), collapse = ", ")
     } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
-        "Full NA"
-    } else if (is.logical(x) & (length(x) > sum(is.na(x)))) { 
-        paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
+      "Full NA"
+    } else if (is.logical(x) & (length(x) > sum(is.na(x)))) {
+      paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
     } else if (is.character(x)) {
-        NA
+      NA
     } else if (all(is.na(x))) {
-        "Full NA"
+      "Full NA"
+    } else if (is.POSIXct(x) | is.POSIXlt(x) | is.POSIXt(x) | is.Date(x)) {
+      paste(min(x, na.rm = T), "...", max(x, na.rm = T))
     } else {
-        paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
+      paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
     })
-    varlist <- data.frame(Name)
+    varlist <- data.frame(name)
     varlist$Label <- label
     varlist$Values <- values
-    varlist$Class <- cl
+    varlist$Class <- lapply(d, function(x) ifelse(is.POSIXt(x) | is.POSIXct(x) | is.POSIXlt(x),
+                                                  paste(class(d$startdate), collapse = ", "), class))
     varlist$Type <- type
     varlist$Valid <- valid
     varlist$NAs <- nas
