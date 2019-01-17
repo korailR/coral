@@ -5,6 +5,7 @@
 #' @return a data.frame
 #' @importFrom DT datatable
 #' @importFrom utils View
+#' @import tibble
 #' @export
 #'
 #' @examples
