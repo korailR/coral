@@ -1,6 +1,6 @@
-#' List variables in the browser with shiny
+#' List variables in a table widget in shiny, with some buttons to copy the table to clipboard, save the table as CSV/XLS/PDF, and print the table
 #'
-#' @param d a data frame
+#' @param x a data frame
 #'
 #' @return a data frame
 #' @import shiny
@@ -11,47 +11,52 @@
 #' \dontrun{
 #' varlist.shiny(df)  # df is a data frame
 #' }
-varlist.shiny <- function(d) {
-    myfunc.label <- function(x) attributes(x)[["label"]]
-    variableslabel <- sapply(d, myfunc.label)
-    Name <- names(variableslabel)
-    variableslabel <- as.character(variableslabel)
-    variableslabel[variableslabel == "NULL"] <- NA
-    label <- (label = variableslabel)
-    cl <- as.list(sapply(d, class))
-    type <- as.list(sapply(d, typeof))
-    valid <- as.list(sapply(d, function(x) length(x) - sum(is.na(x))))
-    nas <- as.list(sapply(d, function(x) sum(is.na(x))))
-    options(scipen = 999)
-    values <- lapply(d, function(x) if (is.factor(x)) {
-      paste(levels(x), collapse = ", ")
-    } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
-      "Full NA"
-    } else if (is.logical(x) & (length(x) > sum(is.na(x)))) {
-      paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
-    } else if (is.character(x)) {
-      NA
-    } else if (all(is.na(x))) {
-      "Full NA"
-    } else if (is.POSIXct(x) | is.POSIXlt(x) | is.POSIXt(x) | is.Date(x)) {
-      paste(min(x, na.rm = T), "...", max(x, na.rm = T))
-    } else {
-      paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
-    })
-    varlist <- data.frame(name)
-    varlist$Label <- label
-    varlist$Values <- values
-    varlist$Class <- lapply(d, function(x) ifelse(is.POSIXt(x) | is.POSIXct(x) | is.POSIXlt(x),
-                                                  paste(class(d$startdate), collapse = ", "), class))
-    varlist$Type <- type
-    varlist$Valid <- valid
-    varlist$NAs <- nas
-    varlist <- as.data.frame(lapply(varlist, unlist))
-    rownames(varlist) <- NULL
-                     
-    shiny::shinyApp(ui = shiny::fluidPage(DT::DTOutput("x2")), server = function(input, output, session) {
-        y = varlist
-        output$x2 = DT::renderDT(y, selection = "none", server = F, editable = F, colnames = c(Number = 1),
-            options = list(pageLength = 50))
-    })
+varlist.shiny <- function(x) {
+  myfunc.label <- function(x) attributes(x)[["label"]]
+  variableslabel <- sapply(x, myfunc.label)
+  Names <- names(variableslabel)
+  varlist <- as.data.frame(Names)
+  varlist$Label <- as.character(variableslabel)
+  varlist$Label[varlist$Label == "NULL"] <- NA
+  options(scipen = 999)
+  Values <- lapply(x, function(x) if (is.factor(x)) {
+    paste(levels(x), collapse = ", ")
+  } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
+    "Full NA"
+  } else if (is.logical(x) & (length(x) > sum(is.na(x)))) {
+    paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
+  } else if (is.character(x)) {NA
+  } else if (all(is.na(x))) {
+    "Full NA"
+  } else if (is.POSIXct(x) | is.POSIXlt(x) | is.POSIXt(x) | is.Date(x)) {
+    paste(min(x, na.rm = T), "...", max(x, na.rm = T))
+  } else {
+    paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
+  })
+  Class <- lapply(x, function(x) if (is.POSIXt(x) | is.POSIXct(x) | is.POSIXlt(x)) {
+    paste(class(x), collapse = ", ")
+  } else {
+    class(x)
+  })
+  Type <- sapply(x, typeof)
+
+  varlist$Values <- Values
+  varlist$Class <- Class
+  varlist$Type <- Type
+  varlist$Valid <- apply(x, 2, function(x) length(x) - sum(is.na(x)))
+  varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
+  varlist <- as.data.frame(lapply(varlist, unlist))
+  varlist <- as_tibble(varlist)
+
+  shinyApp(
+    ui = fluidPage(DTOutput('tbl')),
+    server = function(input, output) {
+      output$tbl = renderDT(
+        varlist, extensions = 'Buttons', options = list(
+          dom = 'Bfrtip',
+          buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+        )
+      )
+    }
+  )
 }
