@@ -9,15 +9,15 @@
 #' varlist(df) # df is a data frame
 #' varlist(df, tdf = TRUE) # if tdf = TRUE, print a tibble data format 
 #' }
-varlist <- function(d, tdf = FALSE) {
+varlist <- function(x, tdf = FALSE) {
   myfunc.label <- function(x) attributes(x)[["label"]]
-  variableslabel <- sapply(d, myfunc.label)
+  variableslabel <- sapply(x, myfunc.label)
   Names <- names(variableslabel)
   varlist <- as.data.frame(Names)
   varlist$Label <- as.character(variableslabel)
   varlist$Label[varlist$Label == "NULL"] <- NA
   options(scipen = 999)
-  Values <- lapply(d, function(x) if (is.factor(x)) {
+  Values <- lapply(x, function(x) if (is.factor(x)) {
     paste(levels(x), collapse = ", ")
     } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
       "Full NA"
@@ -31,20 +31,20 @@ varlist <- function(d, tdf = FALSE) {
               } else {
                 paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
                 })
-  Class <- lapply(d, function(x) if (is.POSIXt(x) | is.POSIXct(x) | is.POSIXlt(x)) {
+  Class <- lapply(x, function(x) if (is.POSIXt(x) | is.POSIXct(x) | is.POSIXlt(x)) {
     paste(class(x), collapse = ", ")
   } else {
     class(x)
   })
-  Type <- sapply(d, typeof)
+  Type <- sapply(x, typeof)
   
   varlist$Values <- Values
   varlist$Class <- Class
   varlist$Type <- Type
-  varlist$Valid <- apply(d, 2, function(x) length(x) - sum(is.na(x)))
-  varlist$NAs <- apply(d, 2, function(x) sum(is.na(x)))
+  varlist$Valid <- apply(x, 2, function(x) length(x) - sum(is.na(x)))
+  varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- as_tibble(varlist)
   
-  ifelse(tdf ,return(varlist), return(View(varlist, paste("varlist", deparse(substitute(d)), sep = " "))))
+  ifelse(tdf, return(varlist), return(View(varlist, paste("varlist", deparse(substitute(x)), sep = " "))))
   }
