@@ -39,7 +39,6 @@ varlist.view <- function(x) {
     class(x)
   })
   Type <- sapply(x, typeof)
-
   varlist$Values <- Values
   varlist$Class <- Class
   varlist$Type <- Type
