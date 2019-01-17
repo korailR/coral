@@ -6,6 +6,7 @@
 #' @import shiny
 #' @import DT
 #' @import tibble
+#' @import lubridate
 #' @export
 #'
 #' @examples
