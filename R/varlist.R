@@ -37,7 +37,6 @@ varlist <- function(x, tdf = FALSE) {
     class(x)
   })
   Type <- sapply(x, typeof)
-  
   varlist$Values <- Values
   varlist$Class <- Class
   varlist$Type <- Type
@@ -45,6 +44,5 @@ varlist <- function(x, tdf = FALSE) {
   varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- as_tibble(varlist)
-  
   ifelse(tdf, return(varlist), return(View(varlist, paste("varlist", deparse(substitute(x)), sep = " "))))
   }
