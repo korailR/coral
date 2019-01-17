@@ -1,6 +1,6 @@
 #' List variables
 #'
-#' @param d a data.frame
+#' @param x a data.frame
 #'
 #' @return a data.frame
 #' @export
