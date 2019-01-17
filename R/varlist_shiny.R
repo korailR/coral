@@ -5,6 +5,7 @@
 #' @return a data frame
 #' @import shiny
 #' @import DT
+#' @import tibble
 #' @export
 #'
 #' @examples
