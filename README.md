@@ -15,7 +15,7 @@ Functions `varlist()`, `varlist.shiny()` and `varlist.view()` contain descriptio
   - `varlist.view()` creates a data frame of variables in viewer pane
 
 
-Function `mean_n()` computes means over variables. The first argument of `mean_n()` is variables (in columns) and the second argument is the minimal number of variables  that should be non-missing (not NA)
+Function `mean_n()` computes means over variables. The first argument of `mean_n()` is variables (columns) and the second argument is the minimal number of variables  that should be non-missing (not NA)
 
 ### Usage  
 
