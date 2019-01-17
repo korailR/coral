@@ -6,6 +6,7 @@
 #' @importFrom DT datatable
 #' @importFrom utils View
 #' @import tibble
+#' @import lubridate
 #' @export
 #'
 #' @examples
