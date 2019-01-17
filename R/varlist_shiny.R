@@ -39,7 +39,6 @@ varlist.shiny <- function(x) {
     class(x)
   })
   Type <- sapply(x, typeof)
-
   varlist$Values <- Values
   varlist$Class <- Class
   varlist$Type <- Type
@@ -47,7 +46,6 @@ varlist.shiny <- function(x) {
   varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- as_tibble(varlist)
-
   shinyApp(
     ui = fluidPage(DTOutput('tbl')),
     server = function(input, output) {
