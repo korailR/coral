@@ -19,10 +19,11 @@ Function `mean_n()` computes means over variables. The first argument of `mean_n
 
 ### Usage  
 
-`varlist(df)`  #  df is a data frame
+`varlist(df, tdf = FALSE)` #  df is a data frame; if tdf = TRUE, print a tibble data format 
+`varlist.shiny(df)`        #  df is a data frame
+`varlist.view(df)`         #  df is a data frame
 
-
-`mean_n(df[3:7],3)`  #  compute mean over columns 3 to 7 of df (a data frame) and it takes at least 3 valid answers (no NA)
+`mean_n(df[3:7],3)`        #  compute mean over columns 3 to 7 of df (a data frame) and it takes at least 3 valid answers (no NA)
 
 
 
