@@ -4,6 +4,7 @@
 #'
 #' @return a data.frame
 #' @import tibble
+#' @import lubridate
 #' @export
 #'
 #' @examples#' \dontrun{
