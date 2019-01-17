@@ -15,6 +15,7 @@ Imports:
     htmltools, 
     htmlwidgets, 
     magrittr,
+    tibble,
     shiny,
     grDevices, 
     httpuv,
