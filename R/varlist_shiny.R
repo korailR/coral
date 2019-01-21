@@ -48,7 +48,7 @@ varlist.shiny <- function(x) {
   varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- tibble::as_tibble(varlist)
-  shinyApp(
+  shiny::shinyApp(
     ui = fluidPage(DTOutput('tbl')),
     server = function(input, output) {
       output$tbl = renderDT(
