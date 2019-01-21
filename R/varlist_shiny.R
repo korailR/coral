@@ -30,12 +30,12 @@ varlist.shiny <- function(x) {
   } else if (is.character(x)) {NA
   } else if (all(is.na(x))) {
     "Full NA"
-  } else if (is.POSIXct(x) | is.POSIXlt(x) | is.POSIXt(x) | is.Date(x)) {
+  } else if (lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x) | lubridate::is.POSIXt(x) | lubridate::is.Date(x)) {
     paste(min(x, na.rm = T), "...", max(x, na.rm = T))
   } else {
     paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
   })
-  Class <- lapply(x, function(x) if (is.POSIXt(x) | is.POSIXct(x) | is.POSIXlt(x)) {
+  Class <- lapply(x, function(x) if (lubridate::is.POSIXt(x) | lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x)) {
     paste(class(x), collapse = ", ")
   } else {
     class(x)
@@ -47,7 +47,7 @@ varlist.shiny <- function(x) {
   varlist$Valid <- apply(x, 2, function(x) length(x) - sum(is.na(x)))
   varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
-  varlist <- as_tibble(varlist)
+  varlist <- tibble::as_tibble(varlist)
   shinyApp(
     ui = fluidPage(DTOutput('tbl')),
     server = function(input, output) {
