@@ -49,7 +49,7 @@ varlist.shiny <- function(x) {
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- tibble::as_tibble(varlist)
   shiny::shinyApp(
-    ui = shiny::fluidPage(DTOutput('tbl')),
+    ui = shiny::fluidPage(DT::DTOutput('tbl')),
     server = function(input, output) {
       output$tbl = DT::renderDT(
         varlist, extensions = 'Buttons', options = list(
