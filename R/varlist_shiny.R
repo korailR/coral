@@ -51,12 +51,26 @@ varlist.shiny <- function(x) {
   shiny::shinyApp(
     ui = shiny::fluidPage(DT::DTOutput('tbl')),
     server = function(input, output) {
-      output$tbl = DT::renderDT(
-        varlist, extensions = 'Buttons', options = list(
-          dom = 'Bfrtip',
-          buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-        )
+      output$tbl = DT::renderDT(varlist,
+                                editable = F,
+                                caption = 'List of variables',
+                                filter = 'none',
+                                selection = 'multiple',
+                                extensions = list("ColReorder" = NULL,
+                                                  "Buttons" = NULL,
+                                                  "KeyTable" = NULL,
+                                                  "FixedHeader" =NULL,
+                                                  "Select" = TRUE),
+                                options = list(dom = 'Blfrtip',
+                                               autoWidth=TRUE,
+                                               pageLength = 10,
+                                               buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                                               colReorder = TRUE,
+                                               keys = TRUE,
+                                               searchHighlight = TRUE,
+                                               fixedHeader = TRUE
+                                               )
       )
-    }
-  )
+      }
+    )
 }
