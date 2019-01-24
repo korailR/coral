@@ -48,10 +48,24 @@ varlist.view <- function(x) {
   varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- tibble::as_tibble(varlist)
-  DT::datatable(varlist, editable = F,
-                extensions = 'Buttons',
-                options = list(dom = 'Bfrtip',
-                               buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+  DT::datatable(varlist,
+                editable = F,
+                filter = 'none',
+                caption = 'List of variables',
+                selection = 'multiple',
+                extensions = list("ColReorder" = NULL,
+                                  "Buttons" = NULL,
+                                  "KeyTable" = NULL,
+                                  "FixedHeader" =NULL,
+                                  "Select" = TRUE),
+                options = list(dom = 'Blfrtip',
+                               autoWidth=TRUE,
+                               pageLength = 10,
+                               buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                               colReorder = TRUE,
+                               keys = TRUE,
+                               searchHighlight = TRUE,
+                               fixedHeader = TRUE
                                )
                 )
 }
