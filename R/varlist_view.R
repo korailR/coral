@@ -14,9 +14,11 @@
 #' varlist.view(df) # df is a data frame
 #' }
 varlist.view <- function(x) {
-  Label <- attributes(x)[["variable.labels"]]
+  Lab <- attributes(x)[["variable.labels"]]
   Names <- colnames(x)
   n <- length(x)
+  Label <- if(is.null(Lab)) {NA
+  } else {Lab}
   length(Label) <- n
   varlist <- cbind(Names, Label)
   varlist <- as.data.frame(varlist)
