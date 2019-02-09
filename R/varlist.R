@@ -12,9 +12,11 @@
 #' varlist(df, tdf = TRUE) # if tdf = TRUE, print a tibble data format 
 #' }
 varlist <- function(x, tdf = FALSE) {
-  Label <- attributes(x)[["variable.labels"]]
+  Lab <- attributes(x)[["variable.labels"]]
   Names <- colnames(x)
   n <- length(x)
+  Label <- if(is.null(Lab)) {NA
+  } else {Lab}
   length(Label) <- n
   varlist <- cbind(Names, Label)
   varlist <- as.data.frame(varlist)
