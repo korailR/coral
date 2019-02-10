@@ -14,14 +14,10 @@
 #' varlist.shiny(df)  # df is a data frame
 #' }
 varlist.shiny <- function(x) {
-  Lab <- attributes(x)[["variable.labels"]]
+  getlab <- function(x) attributes(x)[["label"]]
+  Label <- sapply(x, getlab)
   Names <- colnames(x)
-  n <- length(x)
-  Label <- if(is.null(Lab)) {NA
-  } else {Lab}
-  length(Label) <- n
-  varlist <- cbind(Names, Label)
-  varlist <- as.data.frame(varlist)
+  varlist <- as.data.frame(cbind(Names, Label))
   varlist$Label[varlist$Label == "NULL"] <- NA
   options(scipen = 999)
   Values <- lapply(x, function(x) if (is.factor(x)) {
