@@ -34,6 +34,8 @@ varlist <- function(x, tdf = FALSE) {
                 })
   Class <- lapply(x, function(x) if (lubridate::is.POSIXt(x) | lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x)) {
     paste(class(x), collapse = ", ")
+  } else if (is.ordered(x) & is.factor(x)){
+    paste(class(x), collapse = ", ")
   } else {
     class(x)
   })
