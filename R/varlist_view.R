@@ -36,7 +36,7 @@ varlist.view <- function(x) {
   })
   Class <- lapply(x, function(x) if (lubridate::is.POSIXt(x) | lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x)) {
     paste(class(x), collapse = ", ")
-  } else if (is.ordered(x) | is.factor(x)){
+  } else if (length(class(x)) > 1){
     paste(class(x), collapse = ", ")
   } else {
     class(x)
