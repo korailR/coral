@@ -26,7 +26,7 @@ varlist.shiny <- function(x) {
     "Full NA"
   } else if (is.logical(x) & (length(x) > sum(is.na(x)))) {
     paste(round(sum(x, na.rm = T)/n * 100), "% TRUE", sep = "")
-  } else if (is.character(x)) {NA
+  } else if (is.character(x)) {first(paste(substr(x, 1, 12),"..."))
   } else if (all(is.na(x))) {
     "Full NA"
   } else if (lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x) | lubridate::is.POSIXt(x) | lubridate::is.Date(x)) {
