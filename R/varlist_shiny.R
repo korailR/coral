@@ -5,7 +5,7 @@
 #' @return a data frame
 #' @import shiny
 #' @import DT
-#' @import tibble
+#' @import tidyverse
 #' @import lubridate
 #' @export
 #'
