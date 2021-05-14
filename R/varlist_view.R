@@ -6,7 +6,7 @@
 #' @importFrom DT datatable
 #' @importFrom utils View
 #' @import tibble
-#' @import tidyverse
+#' @import dplyr
 #' @import lubridate
 #' @export
 #'
