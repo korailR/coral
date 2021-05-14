@@ -5,7 +5,7 @@
 #' @return a data.frame
 #' @importFrom DT datatable
 #' @importFrom utils View
-#' @import tibble
+#' @import tidyverse
 #' @import lubridate
 #' @export
 #'
