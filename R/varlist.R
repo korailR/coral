@@ -3,6 +3,7 @@
 #' @param x a data.frame
 #'
 #' @return a data.frame
+#' @import tibble
 #' @import tidyverse
 #' @import lubridate
 #' @export
