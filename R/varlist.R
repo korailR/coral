@@ -17,7 +17,7 @@ varlist <- function(x, tdf = FALSE) {
   label <- sapply(x, getlab)
   names <- colnames(x)
   varlist <- as.data.frame(cbind(names, label))
-  varlist$Label[varlist$Label == "NULL"] <- NA
+  varlist$label[varlist$label == "NULL"] <- NA
   options(scipen = 999)
   values <- lapply(x, function(x) if (is.factor(x)) {
     paste(levels(x), collapse = ", ")
