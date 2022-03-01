@@ -16,12 +16,12 @@
 #' }
 varlist.view <- function(x) {
   getlab <- function(x) attributes(x)[["label"]]
-  Label <- sapply(x, getlab)
-  Names <- colnames(x)
-  varlist <- as.data.frame(cbind(Names, Label))
-  varlist$Label[varlist$Label == "NULL"] <- NA
+  label <- sapply(x, getlab)
+  names <- colnames(x)
+  varlist <- as.data.frame(cbind(names, label))
+  varlist$label[varlist$label == "NULL"] <- NA
   options(scipen = 999)
-  Values <- lapply(x, function(x) if (is.factor(x)) {
+  values <- lapply(x, function(x) if (is.factor(x)) {
     paste(levels(x), collapse = ", ")
   } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
     "Full NA"
@@ -35,19 +35,19 @@ varlist.view <- function(x) {
   } else {
     paste(round(min(x, na.rm = T), digits = 4), "...", round(max(x, na.rm = T), digits = 4))
   })
-  Class <- lapply(x, function(x) if (lubridate::is.POSIXt(x) | lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x)) {
+  class <- lapply(x, function(x) if (lubridate::is.POSIXt(x) | lubridate::is.POSIXct(x) | lubridate::is.POSIXlt(x)) {
     paste(class(x), collapse = ", ")
   } else if (length(class(x)) > 1){
     paste(class(x), collapse = ", ")
   } else {
     class(x)
   })
-  Type <- sapply(x, typeof)
-  varlist$Values <- Values
-  varlist$Class <- Class
-  varlist$Type <- Type
-  varlist$Valid <- apply(x, 2, function(x) length(x) - sum(is.na(x)))
-  varlist$NAs <- apply(x, 2, function(x) sum(is.na(x)))
+  type <- sapply(x, typeof)
+  varlist$values <- values
+  varlist$class <- class
+  varlist$type <- type
+  varlist$valid <- apply(x, 2, function(x) length(x) - sum(is.na(x)))
+  varlist$na <- apply(x, 2, function(x) sum(is.na(x)))
   varlist <- as.data.frame(lapply(varlist, unlist))
   varlist <- tibble::as_tibble(varlist)
   DT::datatable(varlist,
