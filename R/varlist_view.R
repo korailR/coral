@@ -26,7 +26,7 @@ varlist.view <- function(x) {
   } else if (is.logical(x) & (length(x) == sum(is.na(x)))) {
     "Full NA"
   } else if (is.logical(x) & (length(x) > sum(is.na(x)))) {
-    paste(round("TRUE, FALSE | ", round(sum(x, na.rm = T)/length(x) * 100), "% of TRUE", sep = "")
+    paste("TRUE, FALSE | ", round(sum(x, na.rm = T)/length(x) * 100), "% of TRUE", sep = "")
   } else if (is.character(x)) {dplyr::first(paste(substr(x, 1, 12),"..."))
   } else if (all(is.na(x))) {
     "Full NA"
