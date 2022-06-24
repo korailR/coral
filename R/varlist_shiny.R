@@ -101,16 +101,17 @@ varlist_shiny <- function(x, values = c("min_max", "all"), to_df = FALSE) {
     server = function(input, output) {
       output$tbl = DT::renderDT(varlist,
                                 editable = F,
-                                caption = "List of variables",
+                                # caption = "List of variables",
                                 filter = "none",
                                 selection = "multiple",
-                                extensions = list("ColReorder" = NULL,
+                                extensions = list("ColReorder" = TRUE,
                                                   "Buttons" = TRUE,
                                                   "KeyTable" = NULL,
                                                   "FixedHeader" = TRUE,
                                                   "Select" = TRUE,
                                                   "Responsive" = TRUE),
                                 options = list(dom = "Blfrtip",
+                                               fixedHeader = TRUE,
                                                autoWidth = TRUE,
                                                pageLength = 10,
                                                info = FALSE,
@@ -119,15 +120,14 @@ varlist_shiny <- function(x, values = c("min_max", "all"), to_df = FALSE) {
                                                colReorder = TRUE,
                                                keys = TRUE,
                                                searchHighlight = TRUE,
-                                               fixedHeader = TRUE,
                                                columnDefs = list(list(targets = 4, width = '10px'),
                                                                  list(targets = 5, width = '10px'),
                                                                  list(targets = 6, width = '5px'),
                                                                  list(targets = 7, width = '5px'),
                                                                  list(searchPanes = list(show = FALSE), targets = 1:4)),
                                                scrollX = TRUE
-                                              )
                                 )
+      )
     }
   )
 }
