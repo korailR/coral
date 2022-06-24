@@ -12,9 +12,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' varlist_shiny(df) # df is a data frame
-#' varlist_shiny(df, values = c("min_max", "all"), to_df = FALSE) # if values = "min_max" (default), display minimum and maximum values of columns, if values = "all", display all values of columns
-#' varlist_shiny(df, values = c("min_max", "all"), to_df = FALSE) # if to_df = TRUE, print a tibble data format 
+#' varlist_shiny(df, values = c("min_max", "all")) # df is a data frame
+#' varlist_shiny(df, values = c("min_max", "all")) # if values = "min_max" (default), display minimum and maximum values of columns, if values = "all", display all values of columns
 #' }
 varlist_shiny <- function(x, values = c("min_max", "all"), to_df = FALSE) {
   getlab <- function(x) attributes(x)[["label"]]
@@ -113,6 +112,8 @@ varlist_shiny <- function(x, values = c("min_max", "all"), to_df = FALSE) {
                                 options = list(dom = 'Blfrtip',
                                                autoWidth=TRUE,
                                                pageLength = 10,
+                                               info = FALSE,
+                                               lengthMenu = list(c(10, 20, 50, 100, -1), c("10","20", "50", "100", "All")),
                                                buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
                                                colReorder = TRUE,
                                                keys = TRUE,
