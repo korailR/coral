@@ -10,21 +10,6 @@
 #'
 #' @examples#' \dontrun{
 #' varlist(df) # df is a data frame
-#' varlist(df, to_df = TRUE) # if tdf = TRUE, print a tibble data format 
-#' varlist(df, values = "all") # if values = "all", display all values of columns
-#' }
-varlist <- #' List variables
-#'
-#' @param x a data.frame
-#'
-#' @return a data.frame
-#' @import tibble
-#' @import dplyr
-#' @import lubridate
-#' @export
-#'
-#' @examples#' \dontrun{
-#' varlist(df) # df is a data frame
 #' varlist(df, values = c("min_max", "all"), to_df = FALSE) # if values = "min_max" (default), display minimum and maximum values of columns, if values = "all", display all values of columns
 #' varlist(df, values = c("min_max", "all"), to_df = FALSE) # if to_df = TRUE, print a tibble data format 
 #' }
