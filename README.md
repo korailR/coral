@@ -25,9 +25,9 @@ Function `sum_n(x, n)` computes row sums from a `data.frame` or `matrix`. The fi
                                                                     # if values = "min_max" (default), display minimum and maximum values of columns
                                                                     # if values = "all", display all values of columns
 
-`varlist_shiny(df,values = c("min_max", "all"), to_df = FALSE)`     # df is a data frame  
+`varlist_shiny(df,values = c("min_max", "all"))`     # df is a data frame  
 
-`varlist_view(df, values = c("min_max", "all"), to_df = FALSE)`     # df is a data frame  
+`varlist_view(df, values = c("min_max", "all"))`     # df is a data frame  
 
 `mean_n(mat)`              #  compute row means over mat (a matrix) if there is at least one valid value (default value of n = 1)
 
