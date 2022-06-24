@@ -105,22 +105,29 @@ varlist_shiny <- function(x, values = c("min_max", "all"), to_df = FALSE) {
                                 filter = 'none',
                                 selection = 'multiple',
                                 extensions = list("ColReorder" = NULL,
-                                                  "Buttons" = NULL,
+                                                  "Buttons" = TRUE,
                                                   "KeyTable" = NULL,
-                                                  "FixedHeader" =NULL,
-                                                  "Select" = TRUE),
+                                                  "FixedHeader" =T,
+                                                  "Select" = TRUE,
+                                                  "Responsive" = TRUE),
                                 options = list(dom = 'Blfrtip',
                                                autoWidth=TRUE,
                                                pageLength = 10,
                                                info = FALSE,
                                                lengthMenu = list(c(10, 20, 50, 100, -1), c("10","20", "50", "100", "All")),
-                                               buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                                               buttons = list("copy", "print", "csv", "excel", "pdf"),
                                                colReorder = TRUE,
                                                keys = TRUE,
                                                searchHighlight = TRUE,
-                                               fixedHeader = TRUE
-                                               )
-      )
-      }
-    )
+                                               fixedHeader = TRUE,
+                                               columnDefs = list(list(targets = 4, width = '10px'),
+                                                                 list(targets = 5, width = '10px'),
+                                                                 list(targets = 6, width = '5px'),
+                                                                 list(targets = 7, width = '5px'),
+                                                                 list(searchPanes = list(show = FALSE), targets = 1:4)),
+                                               scrollX = TRUE
+                                              )
+                                )
+    }
+  )
 }
