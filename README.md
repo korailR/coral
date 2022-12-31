@@ -18,6 +18,14 @@ Function `mean_n(x, n)` computes row means from a `data.frame` or `matrix`. The 
 
 Function `sum_n(x, n)` computes row sums from a `data.frame` or `matrix`. The first argument of `sum_n()` is variables (columns of a data frame or matrix) and the second argument a numeric value indicates the minimum amount of valid values (not NA) per row to calculate row sum (`default = 1`). Numeric value between 0 and 1 indicates a proportion of valid values per row to calculate the row sum.
 
+Function `copy_write_excel(x)` copies a data frame or a matrix to the clipboard that can be pasted into Excel.
+#'
+#' @param x a data frame or matrix
+#'
+#' @examples
+#' \dontrun{
+#' copy_write_excel(x)
+
 
 ### Usage  
 
@@ -29,17 +37,20 @@ Function `sum_n(x, n)` computes row sums from a `data.frame` or `matrix`. The fi
 
 `varlist_view(df, values = c("min_max", "all"))`     # df is a data frame  
 
-`mean_n(mat)`              #  compute row means over mat (a matrix) if there is at least one valid value (default value of n = 1)
+`mean_n(mat)`             #  computes row means over mat (a matrix) if there is at least one valid value (default value of n = 1)
 
-`mean_n(df[,3:7], 3)`      #  compute row means over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
+`mean_n(df[,3:7], 3)`     #  computes row means over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
 
-`mean_n(df[,3:7], 0.8)`    #  compute mean over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
+`mean_n(df[,3:7], 0.8)`   #  computes mean over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
 
-`sum_n(mat)`              #  compute row sums over mat (a matrix) if there is at least one valid value (default value of n = 1)
+`sum_n(mat)`              #  computes row sums over mat (a matrix) if there is at least one valid value (default value of n = 1)
 
-`sum_n(df[,3:7], 3)`      #  compute row sums over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
+`sum_n(df[,3:7], 3)`      #  computes row sums over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
 
-`sum_n(df[,3:7], 0.8)`    #  compute sum over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
+`sum_n(df[,3:7], 0.8)`    #  computes sum over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
+
+`copy_write_excel(df)`    #  copies df (a data frame) to the clipboard that can be pasted into Excel
+
 
 ## Installation
 
