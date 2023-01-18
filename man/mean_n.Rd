@@ -19,6 +19,6 @@ Computing mean over variables and dealing with NAs
 }
 \examples{
 \dontrun{
-mean_n(df[2:5,3])
+mean_n(df[, 2:5], 3)
 }
 }
