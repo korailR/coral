@@ -37,19 +37,21 @@ Function `copy_write_excel(x)` copies a data frame or a matrix to the clipboard 
 
 `varlist_view(df, values = c("min_max", "all"))`     # df is a data frame  
 
-`mean_n(mat)`             #  computes row means over mat (a matrix) if there is at least one valid value (default value of n = 1)
+`mean_n(mat)`              #  computes row means over mat (a matrix) if there is at least one valid value (default value of n = 1)
 
-`mean_n(df[,3:7], 3)`     #  computes row means over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
+`mean_n(df[, 3:7], 3)`     #  computes row means over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
 
-`mean_n(df[,3:7], 0.8)`   #  computes mean over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
+`mean_n(df[, 3:7], 0.8)`   #  computes mean over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
 
-`sum_n(mat)`              #  computes row sums over mat (a matrix) if there is at least one valid value (default value of n = 1)
+`mean_n(mtcars[, c("mpg","cyl")], 2)` #  computes row means over columns mpg and cyl of mtcars (a data frame) if there is two valid values per row
 
-`sum_n(df[,3:7], 3)`      #  computes row sums over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
+`sum_n(mat)`               #  computes row sums over mat (a matrix) if there is at least one valid value (default value of n = 1)
 
-`sum_n(df[,3:7], 0.8)`    #  computes sum over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
+`sum_n(df[, 3:7], 3)`      #  computes row sums over columns 3 to 7 of df (a data frame) if the minimum amount of valid values (not NA) is 3 per row
 
-`copy_write_excel(df)`    #  copies df (a data frame) to the clipboard that can be pasted into Excel
+`sum_n(df[, 3:7], 0.8)`    #  computes sum over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
+
+`copy_write_excel(df)`     #  copies df (a data frame) to the clipboard that can be pasted into Excel
 
 
 ## Installation
