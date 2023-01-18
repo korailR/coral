@@ -43,7 +43,7 @@ Function `copy_write_excel(x)` copies a data frame or a matrix to the clipboard 
 
 `mean_n(df[, 3:7], 0.8)`   #  computes mean over columns 3 to 7 of df (a data frame) if the proportion of valid values (not NA) is 0.8 per row
 
-`mean_n(mtcars[, c("mpg","cyl")], 2)` #  computes row means over columns mpg and cyl of mtcars (a data frame) if there is two valid values per row
+`mean_n(mtcars[, c("mpg","cyl")], 2)` #  computes row means over columns mpg and cyl of mtcars (a data frame) if there are two valid values per row
 
 `sum_n(mat)`               #  computes row sums over mat (a matrix) if there is at least one valid value (default value of n = 1)
 
