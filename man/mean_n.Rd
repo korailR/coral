@@ -15,7 +15,7 @@ mean_n(vars, not.na = 0)
 mean
 }
 \description{
-This function computes row means from a data.frame or matrix. The first argument of mean_n() is variables (columns of a data frame or matrix) and the second argument a numeric value indicates the minimum amount of valid values (not NA) per row to calculate row mean (default = 1). Numeric value between 0 and 1 indicates a proportion of valid values per row to calculate the row mean.
+mean_n computes row means from a data.frame or matrix. The first argument of mean_n() is variables (columns of a data frame or matrix) and the second argument a numeric value indicates the minimum amount of valid values (not NA) per row to calculate row mean (default = 1). Numeric value between 0 and 1 indicates a proportion of valid values per row to calculate the row mean.
 }
 \examples{
 \dontrun{
