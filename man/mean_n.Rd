@@ -15,10 +15,12 @@ mean_n(vars, not.na = 0)
 mean
 }
 \description{
-Computing mean over variables and dealing with NAs
+This function computes row means from a data.frame or matrix. The first argument of mean_n() is variables (columns of a data frame or matrix) and the second argument a numeric value indicates the minimum amount of valid values (not NA) per row to calculate row mean (default = 1). Numeric value between 0 and 1 indicates a proportion of valid values per row to calculate the row mean.
 }
 \examples{
 \dontrun{
 mean_n(df[, 2:5], 3)
+mean_n(df[, 1:5], 0.5)
+mean_n(mtcars[, c("mpg","cyl")], 2)
 }
 }
