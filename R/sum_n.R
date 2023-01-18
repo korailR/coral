@@ -8,8 +8,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' sum_n(df[2:5, 3])
-#' sum_n(df[1:5, 0.5])
+#' sum_n(df[, 2:5], 3)
+#' sum_n(df[, 1:5], 0.5)
+#' sum_n(mtcars[, c("mpg","cyl")], 2)
 #' }
 sum_n <- function(x, n = 1) {
   digs <- n%%1
