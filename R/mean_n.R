@@ -8,8 +8,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' mean_n(df[2:5, 3])
-#' mean_n(df[1:5, 0.5])
+#' mean_n(df[, 2:5], 3)
+#' mean_n(df[, 1:5], 0.5)
+#' mean_n(mtcars[, c("mpg","cyl")], 2)
 #' }
 mean_n <- function(x, n = 1) {
   digs <- n%%1
